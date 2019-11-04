@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 # encoding: utf8
 from time import sleep
 import sys
