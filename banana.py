@@ -3,12 +3,16 @@
 from time import sleep
 import sys
 import subprocess
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--message', '-m', help="what to say", default="IT'S PEANUT BUTTER JELLY TIME!1!")
+parser.add_argument('prog', help="program to call with banana argument", nargs='*', default=['echo'])
+args = parser.parse_args()
 
 banana = []
-if len(sys.argv) < 2:
-    prog = ['echo']
-else:
-    prog = sys.argv[1:]
+prog = args.prog
+message = args.message
 
 #0
 banana.append(r"""[0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m
@@ -180,5 +184,5 @@ banana.append("""[0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0m [0
 
 for i in range(10):
     for b in banana:
-        subprocess.call(prog + [b])
+        subprocess.call(prog + [b+'\n'+message])
         sleep(0.1)
